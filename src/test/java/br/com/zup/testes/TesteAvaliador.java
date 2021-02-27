@@ -80,6 +80,26 @@ public class TesteAvaliador {
         assertEquals(400.0, maiores.get(0).getValor(), 0.00001);
         assertEquals(300.0, maiores.get(1).getValor(), 0.00001);
         assertEquals(200.0, maiores.get(2).getValor(), 0.00001);
+    }
 
+    @Test
+    public void deveEntenderLeilaoComValoresRandomicos() {
+
+        Usuario joao = new Usuario("Joao");
+        Usuario maria = new Usuario("Maria");
+
+        Leilao leilao = new Leilao("Carro");
+
+        leilao.propoe(new Lance(joao, 40000.0));
+        leilao.propoe(new Lance(maria, 41000.0));
+        leilao.propoe(new Lance(joao, 10.0));
+        leilao.propoe(new Lance(maria, 100000.0));
+
+        Avaliador leiloeiro = new Avaliador();
+
+        leiloeiro.avalia(leilao);
+
+        assertEquals(100000.0, leiloeiro.getMaiorLance(), 0.00001);
+        assertEquals(10.0, leiloeiro.getMenorLance(), 0.00001);
     }
 }
