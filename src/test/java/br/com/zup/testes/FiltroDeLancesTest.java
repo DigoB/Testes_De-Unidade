@@ -45,8 +45,6 @@ public class FiltroDeLancesTest {
         assertEquals(600, resultado.get(0).getValor(), 0.00001);
     }
 
-    // Implementar a logica para valores acima de 5 mil.
-
     @Test
     public void deveSelecionarLancesAcimaDe5Mil() {
         Usuario joao = new Usuario("Joao");
